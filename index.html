@@ -2,10 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <!-- 1. Evita que el usuario haga zoom accidental y ajusta la escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- 2. Bloquea la inversión de colores automática de los celulares en modo oscuro -->
-    <meta name="color-scheme" content="light">
+    <!-- Le decimos al navegador que nuestro diseño YA es oscuro, para que no intente invertir los colores -->
+    <meta name="color-scheme" content="dark">
     
     <title>Para una amistad especial 🌻</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -15,7 +14,8 @@
             padding: 0;
             width: 100vw;
             height: 100vh;
-            height: 100dvh; /* Altura real en celulares */
+            height: 100dvh; 
+            /* Fondo original de noche mágica */
             background: radial-gradient(circle at center, #1b1625 0%, #0a080d 100%);
             font-family: 'Cormorant Garamond', serif;
             overflow: hidden;
@@ -23,7 +23,6 @@
             justify-content: center;
             align-items: center;
             color: #fff;
-            /* 3. Fija la pantalla para que no rebote ni se mueva al deslizar el dedo */
             position: fixed;
             touch-action: none;
         }
@@ -232,11 +231,11 @@
         }
 
         /* =========================================
-           4. ADAPTACIÓN PARA TELÉFONOS MÓVILES
+           ADAPTACIÓN PARA TELÉFONOS MÓVILES
            ========================================= */
         @media (max-width: 600px) {
             .titulo-elegante {
-                font-size: 1.8rem; /* Título más pequeño */
+                font-size: 1.8rem;
                 margin-bottom: 25px;
             }
             #flor-principal-inicio {
@@ -252,10 +251,10 @@
                 max-width: 90%;
             }
             .frase-bonita {
-                font-size: 2.3rem; /* Saludo más pequeño */
+                font-size: 2.3rem; 
             }
             .texto-amistad {
-                font-size: 1.1rem; /* Texto principal más pequeño */
+                font-size: 1.1rem;
                 line-height: 1.5;
             }
             .firma {
@@ -263,8 +262,8 @@
                 margin-top: 15px;
             }
             #contenedor-corazon {
-                transform: scale(0.7); /* Achica el corazón completo un 30% */
-                margin-bottom: -10px; /* Ajusta el espacio para que el texto suba */
+                transform: scale(0.7); 
+                margin-bottom: -10px; 
             }
         }
     </style>
@@ -294,7 +293,6 @@
                 Gracias por ser ese refugio donde siempre encuentro consuelo y por caminar a mi lado a través de cada estación. Mi vida es infinitamente más brillante desde que estás en ella. <br><br>
                 <span>¡Gracias por nunca soltar mi mano!</span>
             </p>
-            <!-- Aquí está tu firma -->
             <div class="firma">~ Mari ~</div>
         </div>
     </div>
@@ -373,13 +371,11 @@
         // --- 5. DIBUJAR RAMOS DE FLORES (Esquinas) ---
         function dibujarRamos() {
             const configuracionRamos = [
-                // Ramo Inferior Izquierdo
                 { tipo: 'flor-grande', left: '-20px', bottom: '-20px', delay: '1s' },
                 { tipo: 'flor-mediana', left: '60px', bottom: '-10px', delay: '1.3s' },
                 { tipo: 'flor-mediana', left: '10px', bottom: '80px', delay: '1.6s' },
                 { tipo: 'flor-mini', left: '80px', bottom: '60px', delay: '1.9s' },
                 
-                // Ramo Inferior Derecho
                 { tipo: 'flor-grande', right: '-20px', bottom: '-20px', delay: '1.2s' },
                 { tipo: 'flor-mediana', right: '60px', bottom: '-10px', delay: '1.5s' },
                 { tipo: 'flor-mediana', right: '10px', bottom: '80px', delay: '1.8s' },
@@ -427,7 +423,5 @@
             }, 1500); 
         });
     </script>
-</body>
-</html>
 </body>
 </html>

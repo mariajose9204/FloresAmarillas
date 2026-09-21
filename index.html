@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Le decimos al navegador que nuestro diseño YA es oscuro, para que no intente invertir los colores -->
-    <meta name="color-scheme" content="dark">
-    
     <title>Para una amistad especial 🌻</title>
+    <!-- Fuentes de alta costura -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         body {
@@ -14,8 +12,8 @@
             padding: 0;
             width: 100vw;
             height: 100vh;
-            height: 100dvh; 
-            /* Fondo original de noche mágica */
+            height: 100dvh; /* Soporte moderno para móviles */
+            /* Fondo de noche mágica (azul/morado muy oscuro) */
             background: radial-gradient(circle at center, #1b1625 0%, #0a080d 100%);
             font-family: 'Cormorant Garamond', serif;
             overflow: hidden;
@@ -23,8 +21,8 @@
             justify-content: center;
             align-items: center;
             color: #fff;
-            position: fixed;
-            touch-action: none;
+            position: fixed; /* Clava la pantalla */
+            touch-action: none; /* Bloquea el deslizamiento en móviles */
         }
 
         /* --- PANTALLA 1: Inicio --- */
@@ -36,9 +34,9 @@
             z-index: 30;
             transition: opacity 1.5s ease, transform 1.5s ease;
             position: absolute;
-            width: 90%;
         }
 
+        /* Flor estática principal del inicio */
         #flor-principal-inicio {
             position: relative;
             width: 100px;
@@ -97,6 +95,7 @@
             box-sizing: border-box;
         }
 
+        /* Corazón central */
         #contenedor-corazon {
             position: relative;
             width: 280px;
@@ -115,6 +114,7 @@
             100% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(255,215,0,0.9)); }
         }
 
+        /* Diseño del Mensaje */
         .mensaje-agradecimiento {
             background: rgba(15, 12, 20, 0.6);
             backdrop-filter: blur(12px);
@@ -157,6 +157,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Firma final */
         .firma {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
@@ -210,6 +211,7 @@
         .flor-mediana .petalo-flor { top: -5px; left: 34px; width: 12px; height: 45px; transform-origin: 50% 45px; }
         .flor-grande .petalo-flor { top: -10px; left: 54px; width: 22px; height: 75px; transform-origin: 50% 75px; }
 
+        /* --- LUCIÉRNAGAS --- */
         .luciernaga {
             position: absolute;
             background: #d4ff00;
@@ -230,40 +232,34 @@
             100% { transform: translate(0, -200px) scale(0); opacity: 0; }
         }
 
-        /* =========================================
-           ADAPTACIÓN PARA TELÉFONOS MÓVILES
-           ========================================= */
-        @media (max-width: 600px) {
+        /* --- ADAPTACIÓN PARA TELÉFONOS (Diseño Responsivo) --- */
+        @media (max-width: 768px) {
             .titulo-elegante {
                 font-size: 1.8rem;
                 margin-bottom: 25px;
-            }
-            #flor-principal-inicio {
-                width: 75px; height: 75px;
-                margin-bottom: 15px;
             }
             .btn-abrir {
                 padding: 12px 35px;
                 font-size: 0.95rem;
             }
             .mensaje-agradecimiento {
-                padding: 25px 20px;
+                padding: 25px 25px;
                 max-width: 90%;
             }
             .frase-bonita {
-                font-size: 2.3rem; 
+                font-size: 2.8rem;
             }
             .texto-amistad {
                 font-size: 1.1rem;
                 line-height: 1.5;
             }
             .firma {
-                font-size: 2rem;
+                font-size: 1.8rem;
                 margin-top: 15px;
             }
             #contenedor-corazon {
-                transform: scale(0.7); 
-                margin-bottom: -10px; 
+                transform: scale(0.75); /* Hace el corazón un poco más pequeño para que quepa bien */
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -276,7 +272,6 @@
 
     <!-- PANTALLA 1 -->
     <div id="pantalla-inicio">
-        <!-- Flor principal del inicio generada por JS -->
         <div id="flor-principal-inicio"></div>
         <h1 class="titulo-elegante">Feliz Día<br>de las Flores Amarillas</h1>
         <button class="btn-abrir" id="btn-abrir">Descubrir Magia</button>
@@ -286,7 +281,7 @@
     <div id="pantalla-mensaje">
         <div id="contenedor-corazon"></div>
         
-        <div class="mensaje-agradecimiento">
+       <div class="mensaje-agradecimiento">
             <h2 class="frase-bonita">Para mi mejor compañia...</h2>
             <p class="texto-amistad">
                 Como una flor que espera pacientemente el final del invierno, tu amistad ha sido siempre mi primavera más cálida. <br><br>
@@ -298,7 +293,6 @@
     </div>
 
     <script>
-        // --- 1. GENERADOR DE FLORES (Reutilizable) ---
         function crearEstructuraFlor(tipoTamano) {
             const flor = document.createElement('div');
             flor.className = `flor-base ${tipoTamano}`;
@@ -315,7 +309,6 @@
             return flor;
         }
 
-        // --- 2. LUCIÉRNAGAS ---
         function crearLuciernaga() {
             const luci = document.createElement('div');
             luci.classList.add('luciernaga');
@@ -335,7 +328,6 @@
         
         setInterval(crearLuciernaga, 300);
 
-        // --- 3. INICIALIZAR FLOR DE LA PANTALLA DE INICIO ---
         const florInicioContenedor = document.getElementById('flor-principal-inicio');
         const florInicio = crearEstructuraFlor('flor-grande');
         florInicio.style.position = 'relative'; 
@@ -343,7 +335,6 @@
         florInicio.style.translate = '0 0';
         florInicioContenedor.appendChild(florInicio);
 
-        // --- 4. DIBUJAR CORAZÓN ---
         function dibujarCorazon() {
             const contenedor = document.getElementById('contenedor-corazon');
             const cantidadFlores = 55;
@@ -368,7 +359,6 @@
             setTimeout(() => { contenedor.classList.add('latido-brillante'); }, cantidadFlores * 100 + 500);
         }
 
-        // --- 5. DIBUJAR RAMOS DE FLORES (Esquinas) ---
         function dibujarRamos() {
             const configuracionRamos = [
                 { tipo: 'flor-grande', left: '-20px', bottom: '-20px', delay: '1s' },
@@ -385,7 +375,7 @@
             configuracionRamos.forEach(pos => {
                 const flor = crearEstructuraFlor(pos.tipo);
                 flor.classList.add('flor-animada');
-                flor.style.position = 'fixed'; 
+                flor.style.position = 'fixed';
                 flor.style.top = 'auto'; 
                 
                 if(pos.left) flor.style.left = pos.left;
@@ -397,7 +387,6 @@
             });
         }
 
-        // --- 6. INTERACCIÓN DEL BOTÓN ---
         document.getElementById('btn-abrir').addEventListener('click', function() {
             const inicio = document.getElementById('pantalla-inicio');
             const mensaje = document.getElementById('pantalla-mensaje');
@@ -420,7 +409,7 @@
                     dibujarCorazon();
                 }, 100);
                 
-            }, 1500); 
+            }, 1500);
         });
     </script>
 </body>

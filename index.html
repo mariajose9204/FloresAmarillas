@@ -2,16 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Para una amistad especial 🌻</title>
     <!-- Fuentes de alta costura -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        body {
+       body {
             margin: 0;
             padding: 0;
+            width: 100vw;
             height: 100vh;
-            /* Fondo de noche mágica (azul/morado muy oscuro) */
+            height: 100dvh; /* Soporte moderno para móviles */
             background: radial-gradient(circle at center, #1b1625 0%, #0a080d 100%);
             font-family: 'Cormorant Garamond', serif;
             overflow: hidden;
@@ -19,6 +20,8 @@
             justify-content: center;
             align-items: center;
             color: #fff;
+            position: fixed; /* "Clava" la pantalla en su lugar */
+            touch-action: none; /* Bloquea que el usuario arrastre la pantalla con el dedo */
         }
 
         /* --- PANTALLA 1: Inicio --- */

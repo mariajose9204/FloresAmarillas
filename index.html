@@ -2,17 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- 1. Evita que el usuario haga zoom accidental y ajusta la escala -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 2. Bloquea la inversión de colores automática de los celulares en modo oscuro -->
+    <meta name="color-scheme" content="light">
+    
     <title>Para una amistad especial 🌻</title>
-    <!-- Fuentes de alta costura -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-       body {
+        body {
             margin: 0;
             padding: 0;
             width: 100vw;
             height: 100vh;
-            height: 100dvh; /* Soporte moderno para móviles */
+            height: 100dvh; /* Altura real en celulares */
             background: radial-gradient(circle at center, #1b1625 0%, #0a080d 100%);
             font-family: 'Cormorant Garamond', serif;
             overflow: hidden;
@@ -20,8 +23,9 @@
             justify-content: center;
             align-items: center;
             color: #fff;
-            position: fixed; /* "Clava" la pantalla en su lugar */
-            touch-action: none; /* Bloquea que el usuario arrastre la pantalla con el dedo */
+            /* 3. Fija la pantalla para que no rebote ni se mueva al deslizar el dedo */
+            position: fixed;
+            touch-action: none;
         }
 
         /* --- PANTALLA 1: Inicio --- */
@@ -33,9 +37,9 @@
             z-index: 30;
             transition: opacity 1.5s ease, transform 1.5s ease;
             position: absolute;
+            width: 90%;
         }
 
-        /* Flor estática principal del inicio */
         #flor-principal-inicio {
             position: relative;
             width: 100px;
@@ -94,7 +98,6 @@
             box-sizing: border-box;
         }
 
-        /* Corazón central */
         #contenedor-corazon {
             position: relative;
             width: 280px;
@@ -113,7 +116,6 @@
             100% { transform: scale(1.05); filter: drop-shadow(0 0 35px rgba(255,215,0,0.9)); }
         }
 
-        /* Diseño del Mensaje (Glassmorphism Oscuro Elegante) */
         .mensaje-agradecimiento {
             background: rgba(15, 12, 20, 0.6);
             backdrop-filter: blur(12px);
@@ -126,7 +128,7 @@
             opacity: 0;
             transform: translateY(30px);
             animation: subir-mensaje 2s ease forwards;
-            animation-delay: 6s; /* Espera a que el corazón se dibuje */
+            animation-delay: 6s;
             z-index: 25;
         }
 
@@ -155,7 +157,7 @@
         @keyframes subir-mensaje {
             to { opacity: 1; transform: translateY(0); }
         }
-	/* Firma final */
+
         .firma {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
@@ -172,7 +174,6 @@
             scale: 0;
         }
 
-        /* Tamaños */
         .flor-mini { width: 35px; height: 35px; }
         .flor-mediana { width: 80px; height: 80px; z-index: 5; }
         .flor-grande { width: 130px; height: 130px; z-index: 10; }
@@ -203,16 +204,13 @@
             position: absolute;
             background: linear-gradient(to bottom, #fff176, #f57f17);
             border-radius: 10px 10px 50% 50%;
-            box-shadow: 0 0 6px rgba(255, 235, 59, 0.4); /* Brillo propio del pétalo */
+            box-shadow: 0 0 6px rgba(255, 235, 59, 0.4);
         }
         
-        /* Proporciones de pétalos según tamaño */
         .flor-mini .petalo-flor { top: -2px; left: 14px; width: 7px; height: 20px; transform-origin: 50% 19px; }
         .flor-mediana .petalo-flor { top: -5px; left: 34px; width: 12px; height: 45px; transform-origin: 50% 45px; }
         .flor-grande .petalo-flor { top: -10px; left: 54px; width: 22px; height: 75px; transform-origin: 50% 75px; }
 
-
-        /* --- LUCIÉRNAGAS --- */
         .luciernaga {
             position: absolute;
             background: #d4ff00;
@@ -231,6 +229,43 @@
             70% { transform: translate(40px, -150px) scale(1.1); opacity: 0.5; }
             90% { opacity: 1; }
             100% { transform: translate(0, -200px) scale(0); opacity: 0; }
+        }
+
+        /* =========================================
+           4. ADAPTACIÓN PARA TELÉFONOS MÓVILES
+           ========================================= */
+        @media (max-width: 600px) {
+            .titulo-elegante {
+                font-size: 1.8rem; /* Título más pequeño */
+                margin-bottom: 25px;
+            }
+            #flor-principal-inicio {
+                width: 75px; height: 75px;
+                margin-bottom: 15px;
+            }
+            .btn-abrir {
+                padding: 12px 35px;
+                font-size: 0.95rem;
+            }
+            .mensaje-agradecimiento {
+                padding: 25px 20px;
+                max-width: 90%;
+            }
+            .frase-bonita {
+                font-size: 2.3rem; /* Saludo más pequeño */
+            }
+            .texto-amistad {
+                font-size: 1.1rem; /* Texto principal más pequeño */
+                line-height: 1.5;
+            }
+            .firma {
+                font-size: 2rem;
+                margin-top: 15px;
+            }
+            #contenedor-corazon {
+                transform: scale(0.7); /* Achica el corazón completo un 30% */
+                margin-bottom: -10px; /* Ajusta el espacio para que el texto suba */
+            }
         }
     </style>
 </head>
@@ -252,21 +287,20 @@
     <div id="pantalla-mensaje">
         <div id="contenedor-corazon"></div>
         
-       <div class="mensaje-agradecimiento">
+        <div class="mensaje-agradecimiento">
             <h2 class="frase-bonita">Para mi mejor compañia...</h2>
             <p class="texto-amistad">
                 Como una flor que espera pacientemente el final del invierno, tu amistad ha sido siempre mi primavera más cálida. <br><br>
                 Gracias por ser ese refugio donde siempre encuentro consuelo y por caminar a mi lado a través de cada estación. Mi vida es infinitamente más brillante desde que estás en ella. <br><br>
                 <span>¡Gracias por nunca soltar mi mano!</span>
             </p>
-		<!-- Aquí está tu firma -->
+            <!-- Aquí está tu firma -->
             <div class="firma">~ Mari ~</div>
         </div>
     </div>
 
     <script>
         // --- 1. GENERADOR DE FLORES (Reutilizable) ---
-        // Genera la estructura HTML de una flor con 16 pétalos
         function crearEstructuraFlor(tipoTamano) {
             const flor = document.createElement('div');
             flor.className = `flor-base ${tipoTamano}`;
@@ -288,21 +322,19 @@
             const luci = document.createElement('div');
             luci.classList.add('luciernaga');
             
-            // Aparecen en la mitad inferior de la pantalla
             luci.style.left = Math.random() * 100 + 'vw';
             luci.style.top = (Math.random() * 50 + 50) + 'vh'; 
             
-            const tamano = Math.random() * 3 + 2; // Entre 2px y 5px
+            const tamano = Math.random() * 3 + 2; 
             luci.style.width = tamano + 'px';
             luci.style.height = tamano + 'px';
             
-            luci.style.animationDuration = (Math.random() * 6 + 6) + 's'; // Vuelan entre 6 y 12 segundos
+            luci.style.animationDuration = (Math.random() * 6 + 6) + 's'; 
             
             document.body.appendChild(luci);
             setTimeout(() => { luci.remove(); }, 12000);
         }
         
-        // Luciérnagas constantes en el fondo
         setInterval(crearLuciernaga, 300);
 
         // --- 3. INICIALIZAR FLOR DE LA PANTALLA DE INICIO ---
@@ -340,7 +372,6 @@
 
         // --- 5. DIBUJAR RAMOS DE FLORES (Esquinas) ---
         function dibujarRamos() {
-            // Coordenadas base para agrupar las flores en "ramos" en las esquinas
             const configuracionRamos = [
                 // Ramo Inferior Izquierdo
                 { tipo: 'flor-grande', left: '-20px', bottom: '-20px', delay: '1s' },
@@ -358,7 +389,7 @@
             configuracionRamos.forEach(pos => {
                 const flor = crearEstructuraFlor(pos.tipo);
                 flor.classList.add('flor-animada');
-                flor.style.position = 'fixed'; // Pegadas a la pantalla
+                flor.style.position = 'fixed'; 
                 flor.style.top = 'auto'; 
                 
                 if(pos.left) flor.style.left = pos.left;
@@ -393,8 +424,10 @@
                     dibujarCorazon();
                 }, 100);
                 
-            }, 1500); // Transición de 1.5 segundos
+            }, 1500); 
         });
     </script>
+</body>
+</html>
 </body>
 </html>

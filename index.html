@@ -2,30 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Viewport estricto para evitar zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <!-- Fuerza al navegador a respetar los colores originales sin importar si el modo oscuro está activado o desactivado en el teléfono -->
+    <meta name="color-scheme" content="only dark">
     <title>Para una amistad especial 🌻</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-       /* Firma final */
-        .firma {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: #e6c24a;
-            text-align: right;
-            margin-top: 25px;
-            text-shadow: 0 0 15px rgba(230, 194, 74, 0.4);
-        }
+        /* Bloqueo total de la pantalla para que sea inamovible */
         body {
             margin: 0;
             padding: 0;
+            width: 100vw;
             height: 100vh;
+            height: 100dvh; /* Altura exacta en móviles */
+            background-color: #0a080d; /* Color base de seguridad */
             background: radial-gradient(circle at center, #1b1625 0%, #0a080d 100%);
             font-family: 'Cormorant Garamond', serif;
-            overflow: hidden;
+            color: #fff;
+            overflow: hidden; /* Oculta barras de desplazamiento */
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #fff;
+            position: fixed; /* Clava la interfaz */
+            touch-action: none; /* Bloquea gestos de arrastre */
+            overscroll-behavior: none; /* Evita el efecto rebote o recargar al tirar */
+            -webkit-user-select: none; /* Evita seleccionar texto por accidente */
+            user-select: none;
+            color-scheme: only dark;
         }
 
         #pantalla-inicio {
@@ -154,10 +158,20 @@
             font-size: 1.5rem;
         }
 
+        .firma {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: #e6c24a;
+            text-align: right;
+            margin-top: 25px;
+            text-shadow: 0 0 15px rgba(230, 194, 74, 0.4);
+        }
+
         @keyframes subir-mensaje {
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- FLORES --- */
         .flor-base { position: absolute; translate: -50% -50%; scale: 0; }
         .flor-mini { width: 35px; height: 35px; }
         .flor-mediana { width: 80px; height: 80px; z-index: 5; }
@@ -213,6 +227,45 @@
             90% { opacity: 1; }
             100% { transform: translate(0, -200px) scale(0); opacity: 0; }
         }
+
+        /* --- ADAPTACIÓN PERFECTA PARA CELULARES --- */
+        @media (max-width: 768px) {
+            #flor-principal-inicio {
+                transform: scale(0.65); /* Achica la flor inicial */
+                margin-bottom: 5px;
+                margin-top: -30px;
+            }
+            .titulo-elegante {
+                font-size: 1.6rem;
+                margin-bottom: 25px;
+            }
+            .btn-abrir {
+                padding: 12px 35px;
+                font-size: 0.95rem;
+            }
+            .mensaje-agradecimiento {
+                padding: 25px 20px;
+                max-width: 85%; /* Ajusta el ancho al celular */
+            }
+            .frase-bonita {
+                font-size: 2.5rem;
+            }
+            .texto-amistad {
+                font-size: 1.1rem;
+                line-height: 1.5;
+            }
+            .texto-amistad span {
+                font-size: 1.25rem;
+            }
+            .firma {
+                font-size: 1.8rem;
+                margin-top: 15px;
+            }
+            #contenedor-corazon {
+                transform: scale(0.65); /* Achica el corazón para que quepa bien con el texto */
+                margin-bottom: 0px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -231,15 +284,13 @@
         <div id="contenedor-corazon"></div>
         
        <div class="mensaje-agradecimiento">
-            <h2 class="frase-bonita">Para mi lugar seguro...</h2>
+            <h2 class="frase-bonita">Para mi mejor compañia...</h2>
             <p class="texto-amistad">
                 Como una flor que espera pacientemente el final del invierno, tu amistad ha sido siempre mi primavera más cálida. <br><br>
                 Gracias por ser ese refugio donde siempre encuentro consuelo y por caminar a mi lado a través de cada estación. Mi vida es infinitamente más brillante desde que estás en ella. <br><br>
                 <span>¡Gracias por nunca soltar mi mano!</span>
             </p>
-        
-<!-- Aquí está tu firma -->
-            <div class="firma">~ Mari~</div>
+            <div class="firma">~ Mari ~</div>
         </div>
     </div>
 
@@ -328,10 +379,13 @@
             const inicio = document.getElementById('pantalla-inicio');
             const mensaje = document.getElementById('pantalla-mensaje');
             const musica = document.getElementById('musicaFondo');
+            
             musica.play().catch(e => console.log("Falta archivo de música."));
+            
             inicio.style.opacity = '0';
             inicio.style.transform = 'scale(1.1)';
             inicio.style.pointerEvents = 'none';
+            
             setTimeout(() => {
                 inicio.style.display = 'none';
                 mensaje.style.display = 'flex';
@@ -345,4 +399,5 @@
         });
     </script>
 </body>
+</html>
 </html>
